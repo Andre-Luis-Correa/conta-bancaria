@@ -1,6 +1,6 @@
-package com.menumaster.contabancaria.endereco.cidade;
+package com.menumaster.contabancaria.cidade;
 
-import com.menumaster.contabancaria.endereco.unidadefederativa.UnidadeFederativa;
+import com.menumaster.contabancaria.unidadefederativa.UnidadeFederativa;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -14,7 +14,7 @@ public class Cidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idCidade;
 
     private String nomeCidade;
 

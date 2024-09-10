@@ -1,4 +1,4 @@
-package com.menumaster.contabancaria.endereco.bairro;
+package com.menumaster.contabancaria.bairro;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

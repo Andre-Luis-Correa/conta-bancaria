@@ -1,5 +1,6 @@
 package com.menumaster.contabancaria.agencia;
 
+import com.menumaster.contabancaria.banco.Banco;
 import com.menumaster.contabancaria.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -24,4 +25,7 @@ public class Agencia {
     private String numeroEndereco;
 
     private String complementoEndereco;
+
+    @ManyToOne
+    private Banco banco;
 }

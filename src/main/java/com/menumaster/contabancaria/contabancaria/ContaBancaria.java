@@ -2,7 +2,8 @@ package com.menumaster.contabancaria.contabancaria;
 
 
 import com.menumaster.contabancaria.agencia.Agencia;
-import com.menumaster.contabancaria.client.Client;
+import com.menumaster.contabancaria.banco.Banco;
+import com.menumaster.contabancaria.cliente.Cliente;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -30,7 +31,5 @@ public class ContaBancaria {
     private LocalDate dataAberturaContaBancaria;
 
     @ManyToOne
-    private Client client;
-
-
+    private Cliente cliente;
 }

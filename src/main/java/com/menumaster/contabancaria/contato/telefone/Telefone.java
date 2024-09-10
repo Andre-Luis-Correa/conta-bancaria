@@ -1,6 +1,6 @@
 package com.menumaster.contabancaria.contato.telefone;
 
-import com.menumaster.contabancaria.client.Client;
+import com.menumaster.contabancaria.cliente.Cliente;
 import com.menumaster.contabancaria.contato.telefone.ddd.DDD;
 import com.menumaster.contabancaria.contato.telefone.ddi.DDI;
 import jakarta.persistence.Entity;
@@ -26,6 +26,6 @@ public class Telefone {
     private DDI numeroDDI;
 
     @ManyToOne
-    private Client client;
+    private Cliente cliente;
 
 }

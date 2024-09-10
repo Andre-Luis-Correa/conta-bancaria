@@ -1,4 +1,4 @@
-package com.menumaster.contabancaria.client;
+package com.menumaster.contabancaria.cliente;
 
 import com.menumaster.contabancaria.endereco.Endereco;
 import jakarta.persistence.*;
@@ -10,7 +10,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Client {
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

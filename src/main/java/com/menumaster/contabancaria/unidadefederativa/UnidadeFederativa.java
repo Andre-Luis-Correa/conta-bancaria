@@ -1,4 +1,4 @@
-package com.menumaster.contabancaria.endereco.tipologradouro;
+package com.menumaster.contabancaria.unidadefederativa;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -10,10 +10,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class TipoLogradouro {
+public class UnidadeFederativa {
 
     @Id
-    private String siglaTipoLogradouro;
+    private String siglaUF;
 
-    private String nomeTipoLogradouro;
+    private String nomeUF;
 }

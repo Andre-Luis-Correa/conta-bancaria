@@ -1,6 +1,6 @@
-package com.menumaster.contabancaria.endereco.logradouro;
+package com.menumaster.contabancaria.logradouro;
 
-import com.menumaster.contabancaria.endereco.tipologradouro.TipoLogradouro;
+import com.menumaster.contabancaria.tipologradouro.TipoLogradouro;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;

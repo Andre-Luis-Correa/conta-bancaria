@@ -1,6 +1,6 @@
 package com.menumaster.contabancaria.contato.email;
 
-import com.menumaster.contabancaria.client.Client;
+import com.menumaster.contabancaria.cliente.Cliente;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -16,5 +16,5 @@ public class Email {
     private String email;
 
     @ManyToOne
-    private Client client;
+    private Cliente cliente;
 }

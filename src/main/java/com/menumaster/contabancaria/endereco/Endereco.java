@@ -1,8 +1,8 @@
 package com.menumaster.contabancaria.endereco;
 
-import com.menumaster.contabancaria.endereco.bairro.Bairro;
-import com.menumaster.contabancaria.endereco.cidade.Cidade;
-import com.menumaster.contabancaria.endereco.logradouro.Logradouro;
+import com.menumaster.contabancaria.bairro.Bairro;
+import com.menumaster.contabancaria.cidade.Cidade;
+import com.menumaster.contabancaria.logradouro.Logradouro;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
