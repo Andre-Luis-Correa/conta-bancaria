@@ -25,11 +25,11 @@ public class ContaBancariaService {
     public void cadastrarContaBancaria() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite seu cpf: ");
+        System.out.print("Digite seu cpf: ");
         String cpf = scanner.nextLine();
 
         if(!clienteService.verificarSeExisteCliente(cpf)) {
-            System.out.println("É necessário cadastrar-se antes de criar uma conta bancária!");
+            System.out.println("\nÉ necessário cadastrar-se antes de criar uma conta bancária!\n");
             return;
         }
 
@@ -37,9 +37,9 @@ public class ContaBancariaService {
 
         if(contaBancaria != null) {
             contaBancariaRepository.save(contaBancaria);
-            System.out.println("Conta bancária registrada com sucesso!");
+            System.out.println("\nConta bancária registrada com sucesso!\n");
         } else {
-            System.out.println("Não foi possível concluir o cadastro da conta!");
+            System.out.println("\nNão foi possível concluir o cadastro da conta!\n");
         }
     }
 

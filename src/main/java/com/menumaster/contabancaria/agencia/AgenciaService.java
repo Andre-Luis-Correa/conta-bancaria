@@ -17,11 +17,11 @@ public class AgenciaService {
 
         imprimirAgencias();
 
-        System.out.println("Digite o número da agência: ");
+        System.out.print("Digite o código da agência: ");
         String codigoAgencia = scanner.nextLine();
 
         while(!agenciaRepository.existsByCodigoAgencia(codigoAgencia)) {
-            System.out.println("Digite um número da agência válido: ");
+            System.out.print("Digite um código da agência válido: ");
             codigoAgencia = scanner.nextLine();
         }
 
@@ -34,25 +34,25 @@ public class AgenciaService {
         if (agencias.isEmpty()) {
             System.out.println("Nenhuma agência encontrada.");
         } else {
-            System.out.println(formatarAgencias(agencias));
+            System.out.println("\n -----------------------------------------Agencias-----------------------------------------");
+            for(Agencia agencia : agencias){
+                System.out.println(formatarAgencias(agencia));
+            }
+            System.out.println(" ------------------------------------------------------------------------------------------");
         }
     }
+
+    private String formatarAgencias(Agencia agencia) {
+        return String.format("| Código: %-10s Nome: %-30s Banco: %-25s |",
+                agencia.getCodigoAgencia(),
+                agencia.getNomeAgencia(),
+                agencia.getBanco().getNome());
+    }
+
 
     private List<Agencia> buscarTodasAgencias() {
         return agenciaRepository.findAll();
     }
 
-    private String formatarAgencias(List<Agencia> agencias) {
-        StringBuilder builder = new StringBuilder("Lista de Agências com Bancos:\n");
-        for (Agencia agencia : agencias) {
-            builder.append("Agência: ")
-                    .append(agencia.getNomeAgencia())
-                    .append(" | Código: ")
-                    .append(agencia.getCodigoAgencia())
-                    .append(" | Banco: ")
-                    .append(agencia.getBanco().getNome())
-                    .append("\n");
-        }
-        return builder.toString();
-    }
+
 }
