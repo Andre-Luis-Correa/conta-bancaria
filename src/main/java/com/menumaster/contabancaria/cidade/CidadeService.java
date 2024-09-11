@@ -46,15 +46,15 @@ public class CidadeService {
             return;
         }
 
-        System.out.println("\n ----------------------Cidades---------------------");
+        System.out.println("\n ---------------------------Cidades---------------------------");
         for (Cidade cidade : cidadeList) {
             System.out.println(formatarCidade(cidade));
         }
-        System.out.println(" --------------------------------------------------");
+        System.out.println(" -------------------------------------------------------------");
     }
 
     private String formatarCidade(Cidade cidade) {
-        return String.format("| Cidade: %-20s  UF: %-4s (%s) |",
+        return String.format("| Cidade: %-20s  UF: %-20s (%s) |",
                 cidade.getNomeCidade(),
                 cidade.getUnidadeFederativa().getNomeUF(),
                 cidade.getUnidadeFederativa().getSiglaUF());
