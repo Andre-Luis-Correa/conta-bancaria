@@ -17,11 +17,11 @@ public class UnidadeFederativaService {
 
         imprimirUnidadesFederativas();
 
-        System.out.println("Selecione o estado (informe a sigla UF)");
+        System.out.print("Sigla da unidade federativa (UF): ");
         String siglaUF = scanner.nextLine();
 
         while(!unidadeFederativaRepository.existsBySiglaUF(siglaUF)) {
-            System.out.println("Selecione um estado existente (informe a sigla UF)");
+            System.out.print("Selecione um estado existente (informe a sigla UF): ");
             siglaUF = scanner.nextLine();
         }
 
@@ -36,10 +36,11 @@ public class UnidadeFederativaService {
             return;
         }
 
-        System.out.println("Lista de Unidades Federativas:");
+        System.out.println("\n --------------Unidades Federativas-------------");
         for (UnidadeFederativa uf : unidadesFederativas) {
             System.out.println(formatarUnidadeFederativa(uf));
         }
+        System.out.println(" -----------------------------------------------");
     }
 
     private List<UnidadeFederativa> buscarTodasUnidadesFederativas() {
@@ -47,7 +48,7 @@ public class UnidadeFederativaService {
     }
 
     private String formatarUnidadeFederativa(UnidadeFederativa uf) {
-        return String.format("Sigla: %s, Nome: %s",
+        return String.format("| Sigla: %-10s  Nome: %-20s |",
                 uf.getSiglaUF(),
                 uf.getNomeUF());
     }

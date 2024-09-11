@@ -22,7 +22,7 @@ public class EnderecoService {
         Scanner scanner = new Scanner(System.in);
         Endereco endereco = new Endereco();
 
-        System.out.println("Digite o CEP:");
+        System.out.print("CEP:");
         endereco.setCep(scanner.nextLine());
 
         endereco.setLogradouro(logradouroService.lerLogradouro());

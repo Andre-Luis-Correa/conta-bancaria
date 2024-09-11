@@ -19,15 +19,14 @@ public class CidadeService {
     public Cidade lerCidade() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite a sigla (UF) do estado: ");
         UnidadeFederativa unidadeFederativa = unidadeFederativaService.lerUnidadeFederativa();
         imprimirCidades(unidadeFederativa);
 
-        System.out.println("Nome da cidade: ");
+        System.out.print("Nome da cidade: ");
         String nomeCidade = scanner.nextLine();
 
         while(!cidadeRepository.existsByNomeCidade(nomeCidade)) {
-            System.out.println("Selecione uma cidade existente: ");
+            System.out.print("Selecione uma cidade existente: ");
             nomeCidade = scanner.nextLine();
         }
 
@@ -47,14 +46,15 @@ public class CidadeService {
             return;
         }
 
-        System.out.println("Lista de Cidades:");
+        System.out.println("\n ----------------------Cidades---------------------");
         for (Cidade cidade : cidadeList) {
             System.out.println(formatarCidade(cidade));
         }
+        System.out.println(" --------------------------------------------------");
     }
 
     private String formatarCidade(Cidade cidade) {
-        return String.format("Cidade: %s, UF: %s (%s)",
+        return String.format("| Cidade: %-20s  UF: %-4s (%s) |",
                 cidade.getNomeCidade(),
                 cidade.getUnidadeFederativa().getNomeUF(),
                 cidade.getUnidadeFederativa().getSiglaUF());

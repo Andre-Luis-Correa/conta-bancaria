@@ -17,7 +17,7 @@ public class LogradouroService {
         Scanner scanner = new Scanner(System.in);
         Logradouro logradouro = new Logradouro();
 
-        System.out.println("Nome do logradouro: ");
+        System.out.print("Logradouro: ");
         logradouro.setNomeLogradouro(scanner.nextLine());
 
         logradouro.setTipoLogradouro(tipoLogradouroService.lerTipoLogradouro());

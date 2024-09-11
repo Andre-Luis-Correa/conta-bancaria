@@ -25,9 +25,9 @@ public class ClienteService {
 
         if(cliente != null) {
             clienteRepository.save(cliente);
-            System.out.println("Cadastro realizado com sucesso!");
+            System.out.println("\nCadastro realizado com sucesso!\n");
         } else {
-            System.out.println("Já existe cliente cadastrado com esse cpf!");
+            System.out.println("\nJá existe cliente cadastrado com esse cpf!\n");
         }
     }
 
@@ -35,21 +35,23 @@ public class ClienteService {
         Scanner scanner = new Scanner(System.in);
         Cliente cliente = new Cliente();
 
-        System.out.println("Digite seu cpf: ");
+        System.out.println("\nDADOS PESSOAIS:");
+        System.out.print("CPF: ");
         String cpf = scanner.nextLine();
 
         if(!clienteRepository.existsByCpfCliente(cpf)) {
             cliente.setCpfCliente(cpf);
 
-            System.out.println("Digite seu nome: ");
+            System.out.print("Nome: ");
             cliente.setNomeCliente(scanner.nextLine());
 
+            System.out.println("\nDADOS DO ENDEREÇO:");
             cliente.setEndereco(enderecoService.lerEndereco());
 
-            System.out.println("Digite o número do endereço: ");
+            System.out.print("Número endereço: ");
             cliente.setNumeroEndereco(scanner.nextLine());
 
-            System.out.println("Digite o complemento do endereco: ");
+            System.out.print("Complemento endereço: ");
             cliente.setComplementoEndereco(scanner.nextLine());
 
             return cliente;

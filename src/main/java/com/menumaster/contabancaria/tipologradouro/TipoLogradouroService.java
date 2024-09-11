@@ -17,11 +17,11 @@ public class TipoLogradouroService {
 
         imprimirTiposLogradouro();
 
-        System.out.println("Selecione o tipo de logradouro (informe a sigla)");
+        System.out.print("Sigla do tipo de logradouro (informe a sigla):");
         String siglaTipoLogradouro = scanner.nextLine();
 
         while(!tipoLogradouroRepository.existsBySiglaTipoLogradouro(siglaTipoLogradouro)) {
-            System.out.println("Selecione um tipo de logradouro existente (informe a sigla)");
+            System.out.print("Selecione um tipo de logradouro existente (informe a sigla):");
             siglaTipoLogradouro = scanner.nextLine();
         }
 
@@ -36,10 +36,11 @@ public class TipoLogradouroService {
             return;
         }
 
-        System.out.println("Lista de Tipos de Logradouro:");
+        System.out.println("\n --------Tipos de Logradouro--------");
         for (TipoLogradouro tipo : tiposLogradouro) {
             System.out.println(formatarTipoLogradouro(tipo));
         }
+        System.out.println(" -----------------------------------");
     }
 
     // Função para buscar todos os tipos de logradouro
@@ -49,7 +50,7 @@ public class TipoLogradouroService {
 
     // Função para formatar a saída dos tipos de logradouro
     private String formatarTipoLogradouro(TipoLogradouro tipoLogradouro) {
-        return String.format("Sigla: %s, Nome: %s",
+        return String.format("| Sigla: %-10s Nome: %-10s| ",
                 tipoLogradouro.getSiglaTipoLogradouro(),
                 tipoLogradouro.getNomeTipoLogradouro());
     }

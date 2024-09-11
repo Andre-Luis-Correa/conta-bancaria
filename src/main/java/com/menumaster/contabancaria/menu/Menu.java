@@ -19,18 +19,19 @@ public class Menu {
     private final TransacaoService transacaoService;
 
     public void mostrarOpcoesMenu() {
-        System.out.println("MENU");
-        System.out.println("1 - Cadastrar cliente");
-        System.out.println("2 - Criar conta bancária");
-        System.out.println("3 - Consultar transações bancárias");
-        System.out.println("4 - Sair");
+        System.out.println(" ------------------MENU------------------");
+        System.out.println("| 1 - Cadastrar cliente                  |");
+        System.out.println("| 2 - Criar conta bancária               |");
+        System.out.println("| 3 - Consultar transações bancárias     |");
+        System.out.println("| 4 - Sair                               |");
+        System.out.println(" ----------------------------------------");
     }
 
     public int selecionarOpcaoMenu() {
         int opcao;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite a opção desejada: ");
+        System.out.print("Digite a opção desejada: ");
         opcao = Integer.parseInt(scanner.nextLine());
 
         return opcao;
@@ -45,19 +46,19 @@ public class Menu {
 
             switch (opcao) {
                 case 1:
-                    System.out.println("1 - Realizar cadastro de cliente");
+                    System.out.println("\n1 - Realizar cadastro de cliente");
                     clienteService.cadastrarCliente();
                     break;
                 case 2:
-                    System.out.println("1 - Criar conta bancária");
+                    System.out.println("\n2 - Criar conta bancária");
                     contaBancariaService.cadastrarContaBancaria();
                     break;
                 case 3:
-                    System.out.println("1 - Consultar transações bancárias");
+                    System.out.println("\n3 - Consultar transações bancárias");
                     transacaoService.consultarTransacoes();
                     break;
                 case 4:
-                    System.out.println("Saindo do programa...");
+                    System.out.println("Saindo do programa...\n");
                     return;
                 default:
                     System.out.println("Opção inválida, por favor, selecione novamente");

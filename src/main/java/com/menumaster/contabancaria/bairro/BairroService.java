@@ -15,7 +15,7 @@ public class BairroService {
         Scanner scanner = new Scanner(System.in);
         Bairro bairro = new Bairro();
 
-        System.out.println("Nome do bairro: ");
+        System.out.print("\nBairro: ");
         bairro.setNomeBairro(scanner.nextLine());
 
         return bairroRepository.save(bairro);
