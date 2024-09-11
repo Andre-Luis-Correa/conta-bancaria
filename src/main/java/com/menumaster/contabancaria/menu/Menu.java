@@ -19,7 +19,7 @@ public class Menu {
     private final TransacaoService transacaoService;
 
     public void mostrarOpcoesMenu() {
-        System.out.println(" ------------------MENU------------------");
+        System.out.println("\n\n ------------------MENU------------------");
         System.out.println("| 1 - Cadastrar cliente                  |");
         System.out.println("| 2 - Criar conta bancária               |");
         System.out.println("| 3 - Consultar transações bancárias     |");
@@ -58,7 +58,7 @@ public class Menu {
                     transacaoService.consultarTransacoes();
                     break;
                 case 4:
-                    System.out.println("Saindo do programa...\n");
+                    System.out.println("Saindo do programa...\n\n");
                     return;
                 default:
                     System.out.println("Opção inválida, por favor, selecione novamente");
