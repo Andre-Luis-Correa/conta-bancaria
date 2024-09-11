@@ -1,11 +1,11 @@
 CREATE TABLE agencia (
                          banco_id BIGINT,
                          endereco_id BIGINT,
-                         id BIGINT NOT NULL AUTO_INCREMENT,
+                         codigo_agencia VARCHAR(255),
                          complemento_endereco VARCHAR(255),
                          nome_agencia VARCHAR(255),
                          numero_endereco VARCHAR(255),
-                         PRIMARY KEY (id)
+                         PRIMARY KEY (codigo_agencia )
 ) ENGINE=InnoDB;
 
 CREATE TABLE bairro (
@@ -39,7 +39,7 @@ CREATE TABLE cliente (
 
 CREATE TABLE conta_bancaria (
                                 data_abertura_conta_bancaria DATE,
-                                agencia_id BIGINT,
+                                agencia_codigo_agencia VARCHAR(255),
                                 cliente_id BIGINT,
                                 numero_conta_bancaria VARCHAR(255) NOT NULL,
                                 tipo_conta_bancaria_sigla_tipo_conta_bancaria VARCHAR(255),
@@ -101,6 +101,7 @@ CREATE TABLE tipo_logradouro (
 CREATE TABLE tipo_transacao (
                                 codigo_tipo_transacao VARCHAR(255) NOT NULL,
                                 nome_tipo_transacao VARCHAR(255),
+                                descricao_padrao_transacao enum ('CREDITO','DEBITO'),
                                 PRIMARY KEY (codigo_tipo_transacao)
 ) ENGINE=InnoDB;
 
@@ -132,7 +133,7 @@ ALTER TABLE cliente
     ADD CONSTRAINT FK64nr9yt889by5lufr1boo5i4s FOREIGN KEY (endereco_id) REFERENCES endereco (id);
 
 ALTER TABLE conta_bancaria
-    ADD CONSTRAINT FKnb5psm5h76u0epfeurjada0ri FOREIGN KEY (agencia_id) REFERENCES agencia (id),
+    ADD CONSTRAINT FKnb5psm5h76u0epfeurjada0ri FOREIGN KEY (agencia_codigo_agencia) REFERENCES agencia (codigo_agencia),
     ADD CONSTRAINT FK3wsnqgpls15ru9qbikgvfymvd FOREIGN KEY (cliente_id) REFERENCES cliente (id),
     ADD CONSTRAINT FK6dcodi40uvn09ljqpxy3a1onp FOREIGN KEY (tipo_conta_bancaria_sigla_tipo_conta_bancaria) REFERENCES tipo_conta_bancaria (sigla_tipo_conta_bancaria);
 

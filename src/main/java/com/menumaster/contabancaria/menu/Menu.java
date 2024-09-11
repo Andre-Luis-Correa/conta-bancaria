@@ -1,6 +1,7 @@
 package com.menumaster.contabancaria.menu;
 
 import com.menumaster.contabancaria.cliente.ClienteService;
+import com.menumaster.contabancaria.contabancaria.ContaBancariaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import java.util.Scanner;
 public class Menu {
 
     private final ClienteService clienteService;
+    private final ContaBancariaService contaBancariaService;
 
     public void mostrarOpcoesMenu() {
         System.out.println("MENU");
@@ -46,6 +48,7 @@ public class Menu {
                     break;
                 case 2:
                     System.out.println("1 - Criar conta bancária");
+                    contaBancariaService.cadastrarContaBancaria();
                     break;
                 case 3:
                     System.out.println("1 - Consultar transações bancárias");

@@ -2,8 +2,8 @@ package com.menumaster.contabancaria.contabancaria;
 
 
 import com.menumaster.contabancaria.agencia.Agencia;
-import com.menumaster.contabancaria.banco.Banco;
 import com.menumaster.contabancaria.cliente.Cliente;
+import com.menumaster.contabancaria.tipocontabancaria.TipoContaBancaria;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;

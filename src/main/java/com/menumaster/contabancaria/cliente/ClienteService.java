@@ -51,4 +51,12 @@ public class ClienteService {
 
         return null;
     }
+
+    public boolean verificarSeExisteCliente(String cpf) {
+        return clienteRepository.existsByCpfCliente(cpf);
+    }
+
+    public Cliente buscarClientePorCpf(String cpf) {
+        return clienteRepository.findByCpfCliente(cpf);
+    }
 }

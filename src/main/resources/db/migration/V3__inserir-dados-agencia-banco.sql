@@ -32,8 +32,8 @@ INSERT INTO banco (nome) VALUES
 
 -- Inserindo dados na tabela Agencia
 -- Assumindo que os IDs das tabelas relacionadas (endereco e banco) estão corretos
-INSERT INTO agencia (endereco_id, banco_id, complemento_endereco, nome_agencia) VALUES
-                                                                                    (1, 1, 'Próximo ao centro', 'Agência Central São Paulo'),
-                                                                                    (2, 2, 'Próxima ao Shopping', 'Agência Barra da Tijuca'),
-                                                                                    (3, 3, 'Próxima à Praça da Liberdade', 'Agência Belo Horizonte'),
-                                                                                    (4, 4, 'Próximo à Catedral', 'Agência Vitória Centro');
+INSERT INTO agencia (codigo_agencia, endereco_id, banco_id, complemento_endereco, nome_agencia) VALUES
+                                                                                    ('1709-x', 1, 1, 'Próximo ao centro', 'Agência Central São Paulo'),
+                                                                                    ('1710-x', 2, 2, 'Próxima ao Shopping', 'Agência Barra da Tijuca'),
+                                                                                    ('1711-x', 3, 3, 'Próxima à Praça da Liberdade', 'Agência Belo Horizonte'),
+                                                                                    ('1712-x', 4, 4, 'Próximo à Catedral', 'Agência Vitória Centro');

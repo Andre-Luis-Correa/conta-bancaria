@@ -1,6 +1,9 @@
 package com.menumaster.contabancaria.transacao;
 
+import com.menumaster.contabancaria.enums.DescricaoPadraoTransacao;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.Getter;
@@ -16,4 +19,7 @@ public class TipoTransacao {
     private String codigoTipoTransacao;
 
     private String nomeTipoTransacao;
+
+    @Enumerated(EnumType.STRING)
+    private DescricaoPadraoTransacao descricaoPadraoTransacao;
 }

@@ -1,4 +1,4 @@
-package com.menumaster.contabancaria.contabancaria;
+package com.menumaster.contabancaria.tipocontabancaria;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
