@@ -17,7 +17,7 @@ import lombok.Setter;
 public class Telefone {
 
     @Id
-    private Long numeroTelefone;
+    private String numeroTelefone;
 
     @ManyToOne
     private DDD numeroDDD;

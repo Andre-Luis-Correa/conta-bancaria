@@ -59,4 +59,9 @@ public class ClienteService {
     public Cliente buscarClientePorCpf(String cpf) {
         return clienteRepository.findByCpfCliente(cpf);
     }
+
+    public void mostrarDadosCliente(Cliente cliente) {
+        System.out.println("Cliente: " + cliente.getNomeCliente());
+        System.out.println("CPF: " + cliente.getCpfCliente());
+    }
 }

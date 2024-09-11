@@ -1,4 +1,4 @@
-package com.menumaster.contabancaria.transacao;
+package com.menumaster.contabancaria.TipoTransacaoBancaria;
 
 import com.menumaster.contabancaria.enums.DescricaoPadraoTransacao;
 import jakarta.persistence.Entity;

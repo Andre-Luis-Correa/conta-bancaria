@@ -1,5 +1,6 @@
 package com.menumaster.contabancaria.transacao;
 
+import com.menumaster.contabancaria.TipoTransacaoBancaria.TipoTransacao;
 import com.menumaster.contabancaria.contabancaria.ContaBancaria;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -28,4 +29,6 @@ public class Transacao {
     private TipoTransacao tipoTransacao;
 
     private String observacao;
+
+    private Double valorTransacao;
 }

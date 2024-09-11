@@ -32,4 +32,6 @@ public class ContaBancaria {
 
     @ManyToOne
     private Cliente cliente;
+
+    private Double saldoAtuaContaBancaria;
 }
