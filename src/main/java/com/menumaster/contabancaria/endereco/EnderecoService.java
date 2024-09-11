@@ -2,6 +2,7 @@ package com.menumaster.contabancaria.endereco;
 
 import com.menumaster.contabancaria.bairro.BairroService;
 import com.menumaster.contabancaria.cidade.CidadeService;
+import com.menumaster.contabancaria.cliente.Cliente;
 import com.menumaster.contabancaria.logradouro.LogradouroService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,21 @@ public class EnderecoService {
         endereco.setBairro(bairroService.lerBairro());
 
         return enderecoRepository.save(endereco);
+    }
+
+    public void mostrarEnderecoCliente(Cliente cliente) {
+        Endereco endereco = cliente.getEndereco();
+
+        if (endereco != null) {
+            System.out.println("Endereço:");
+            System.out.println("   Rua: " + endereco.getLogradouro().getNomeLogradouro() + ", " + cliente.getNumeroEndereco() + " - " + cliente.getComplementoEndereco());
+            System.out.println("   Bairro: " + endereco.getBairro().getNomeBairro());
+            System.out.println("   Cidade: " + endereco.getCidade().getNomeCidade() + " - " + endereco.getCidade().getUnidadeFederativa().getSiglaUF());
+            System.out.println("   CEP: " + endereco.getCep());
+            System.out.println("   Complemento: " + cliente.getComplementoEndereco());
+            System.out.println("   Número: " + cliente.getNumeroEndereco());
+        } else {
+            System.out.println("Endereço não cadastrado.");
+        }
     }
 }

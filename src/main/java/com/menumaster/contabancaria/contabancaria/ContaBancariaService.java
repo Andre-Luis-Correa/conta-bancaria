@@ -108,4 +108,13 @@ public class ContaBancariaService {
         return contaSelecionada;
     }
 
+    public void mostrarDadosContaBancaria(ContaBancaria contaBancaria) {
+        System.out.println("Nro. Conta: " + contaBancaria.getNumeroContaBancaria());
+        System.out.println("Banco: " + contaBancaria.getAgencia().getBanco().getNome());
+        System.out.println("Agencia: " + contaBancaria.getAgencia().getCodigoAgencia());
+        System.out.println("Tipo conta bancária: " + contaBancaria.getTipoContaBancaria().getNomeTipoContaBancaria());
+        System.out.println("Data abertura Conta: " + contaBancaria.getDataAberturaContaBancaria());
+        System.out.println("Saldo Atual da Conta: " + contaBancaria.getSaldoAtuaContaBancaria());
+    }
+
 }

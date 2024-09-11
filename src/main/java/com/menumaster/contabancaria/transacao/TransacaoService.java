@@ -7,6 +7,9 @@ import com.menumaster.contabancaria.contabancaria.ContaBancariaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Scanner;
 
 @Service
@@ -37,6 +40,40 @@ public class TransacaoService {
         System.out.println("Extrato Conta Bancária");
 
         clienteService.mostrarDadosCliente(contaBancaria.getCliente());
+        contaBancariaService.mostrarDadosContaBancaria(contaBancaria);
+        mostrarExtrato(contaBancaria);
 
+    }
+
+    public void mostrarExtrato(ContaBancaria contaBancaria) {
+        Scanner scanner = new Scanner(System.in);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        // Solicitar as datas do período
+        System.out.println("Digite a data de início do período (dd/MM/yyyy): ");
+        LocalDate dataInicio = LocalDate.parse(scanner.nextLine(), formatter);
+
+        System.out.println("Digite a data de fim do período (dd/MM/yyyy): ");
+        LocalDate dataFim = LocalDate.parse(scanner.nextLine(), formatter);
+
+        // Obter transações do repositório
+        List<Transacao> transacoes = transacaoRepository.findTransacoesByContaBancariaAndPeriodo(
+                contaBancaria.getNumeroContaBancaria(), dataInicio, dataFim);
+
+        // Cabeçalho do extrato
+        System.out.println("\nPeríodo do extrato: " + dataInicio.format(formatter) + " a " + dataFim.format(formatter));
+        System.out.println("-----------------------------------------------------------------");
+        System.out.printf("%-12s %-15s %-10s %-12s %-20s %-15s\n", "Data", "Transação Cod", "Tipo Cod", "Nome Tipo", "Observação", "Valor");
+
+        // Exibir as transações
+        for (Transacao transacao : transacoes) {
+            System.out.printf("%-12s %-15s %-10s %-12s %-20s %-15.2f\n",
+                    transacao.getDataTransacao().format(formatter),
+                    transacao.getCodigoTransacao(),
+                    transacao.getTipoTransacao().getCodigoTipoTransacao(),
+                    transacao.getTipoTransacao().getNomeTipoTransacao(),
+                    transacao.getObservacao(),
+                    transacao.getValorTransacao());
+        }
     }
 }

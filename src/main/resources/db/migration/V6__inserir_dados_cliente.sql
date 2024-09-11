@@ -59,3 +59,44 @@ UPDATE conta_bancaria SET saldo_atua_conta_bancaria = saldo_atua_conta_bancaria 
 UPDATE conta_bancaria SET saldo_atua_conta_bancaria = saldo_atua_conta_bancaria + 200.00 WHERE numero_conta_bancaria = '34567-8';
 UPDATE conta_bancaria SET saldo_atua_conta_bancaria = saldo_atua_conta_bancaria - 500.00 WHERE numero_conta_bancaria = '34567-9';
 UPDATE conta_bancaria SET saldo_atua_conta_bancaria = saldo_atua_conta_bancaria - 200.00 WHERE numero_conta_bancaria = '34567-9';
+
+-- Inserir dados na tabela DDD
+INSERT INTO ddd (numeroddd) VALUES
+                                ('11'), -- São Paulo
+                                ('21'), -- Rio de Janeiro
+                                ('31'); -- Minas Gerais
+
+-- Inserir dados na tabela DDI
+INSERT INTO ddi (numeroddi) VALUES
+    ('55'); -- Brasil
+
+
+-- Inserir telefones para João Silva (Cliente 1)
+INSERT INTO telefone (cliente_id, numero_telefone, numeroddd_numeroddd, numeroddi_numeroddi) VALUES
+                                                                                                 (1, '999999999', '11', '55'),  -- Primeiro telefone
+                                                                                                 (1, '988888888', '11', '55');  -- Segundo telefone
+
+-- Inserir telefones para Maria Oliveira (Cliente 2)
+INSERT INTO telefone (cliente_id, numero_telefone, numeroddd_numeroddd, numeroddi_numeroddi) VALUES
+                                                                                                 (2, '987777777', '21', '55'),  -- Primeiro telefone
+                                                                                                 (2, '986666666', '21', '55');  -- Segundo telefone
+
+-- Inserir telefones para Carlos Souza (Cliente 3)
+INSERT INTO telefone (cliente_id, numero_telefone, numeroddd_numeroddd, numeroddi_numeroddi) VALUES
+                                                                                                 (3, '977777777', '31', '55'),  -- Primeiro telefone
+                                                                                                 (3, '976666666', '31', '55');  -- Segundo telefone
+
+-- Inserir e-mails para João Silva (Cliente 1)
+INSERT INTO email (cliente_id, email) VALUES
+                                          (1, 'joao.silva@example.com'),    -- Primeiro e-mail
+                                          (1, 'joao.silva2@example.com');   -- Segundo e-mail
+
+-- Inserir e-mails para Maria Oliveira (Cliente 2)
+INSERT INTO email (cliente_id, email) VALUES
+                                          (2, 'maria.oliveira@example.com'),    -- Primeiro e-mail
+                                          (2, 'maria.oliveira2@example.com');   -- Segundo e-mail
+
+-- Inserir e-mails para Carlos Souza (Cliente 3)
+INSERT INTO email (cliente_id, email) VALUES
+                                          (3, 'carlos.souza@example.com'),    -- Primeiro e-mail
+                                          (3, 'carlos.souza2@example.com');   -- Segundo e-mail

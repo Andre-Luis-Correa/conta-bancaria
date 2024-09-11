@@ -1,5 +1,7 @@
 package com.menumaster.contabancaria.cliente;
 
+import com.menumaster.contabancaria.contato.email.EmailService;
+import com.menumaster.contabancaria.contato.telefone.TelefoneService;
 import com.menumaster.contabancaria.endereco.EnderecoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,10 @@ public class ClienteService {
     private final ClienteRepository clienteRepository;
 
     private final EnderecoService enderecoService;
+
+    private final TelefoneService telefoneService;
+
+    private final EmailService emailService;
 
     public void cadastrarCliente() {
         Cliente cliente = lerDadosCliente();
@@ -63,5 +69,10 @@ public class ClienteService {
     public void mostrarDadosCliente(Cliente cliente) {
         System.out.println("Cliente: " + cliente.getNomeCliente());
         System.out.println("CPF: " + cliente.getCpfCliente());
+
+        telefoneService.mostrarTelefonesCliente(cliente);
+        emailService.mostrarEmailCliente(cliente);
+        enderecoService.mostrarEnderecoCliente(cliente);
+
     }
 }
