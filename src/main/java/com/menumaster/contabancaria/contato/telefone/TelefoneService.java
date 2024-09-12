@@ -22,7 +22,7 @@ public class TelefoneService {
             System.out.println("   Nenhum telefone cadastrado.");
         } else {
             for (Telefone telefone : telefoneList) {
-                System.out.println("   " + telefone.getNumeroDDI().getNumeroDDI() + " " + telefone.getNumeroDDD().getNumeroDDD() + " " + telefone.getNumeroTelefone());
+                System.out.println("   +" + telefone.getNumeroDDI().getNumeroDDI() + " (" + telefone.getNumeroDDD().getNumeroDDD() + ") " + telefone.getNumeroTelefone());
             }
         }
     }

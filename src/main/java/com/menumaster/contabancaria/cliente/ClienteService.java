@@ -69,7 +69,8 @@ public class ClienteService {
     }
 
     public void mostrarDadosCliente(Cliente cliente) {
-        System.out.println("Cliente: " + cliente.getNomeCliente());
+        System.out.println("\nDADOS DO CLIENTE:");
+        System.out.println("Nome: " + cliente.getNomeCliente());
         System.out.println("CPF: " + cliente.getCpfCliente());
 
         telefoneService.mostrarTelefonesCliente(cliente);

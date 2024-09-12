@@ -23,7 +23,7 @@ public class TransacaoService {
     public void consultarTransacoes() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o cpf do cliente: ");
+        System.out.print("CPF do cliente: ");
         String cpf = scanner.nextLine();
 
         if(clienteService.verificarSeExisteCliente(cpf)) {
@@ -36,44 +36,48 @@ public class TransacaoService {
     }
 
     private void mostrarDadosTransacao(ContaBancaria contaBancaria) {
-
-        System.out.println("Extrato Conta Bancária");
-
-        clienteService.mostrarDadosCliente(contaBancaria.getCliente());
-        contaBancariaService.mostrarDadosContaBancaria(contaBancaria);
-        mostrarExtrato(contaBancaria);
-
-    }
-
-    public void mostrarExtrato(ContaBancaria contaBancaria) {
         Scanner scanner = new Scanner(System.in);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        // Solicitar as datas do período
-        System.out.println("Digite a data de início do período (dd/MM/yyyy): ");
+        System.out.print("\nDigite a data de início do período (dd/MM/yyyy): ");
         LocalDate dataInicio = LocalDate.parse(scanner.nextLine(), formatter);
 
-        System.out.println("Digite a data de fim do período (dd/MM/yyyy): ");
+        System.out.print("Digite a data de fim do período (dd/MM/yyyy): ");
         LocalDate dataFim = LocalDate.parse(scanner.nextLine(), formatter);
 
-        // Obter transações do repositório
         List<Transacao> transacoes = transacaoRepository.findTransacoesByContaBancariaAndPeriodo(
                 contaBancaria.getNumeroContaBancaria(), dataInicio, dataFim);
 
-        // Cabeçalho do extrato
-        System.out.println("\nPeríodo do extrato: " + dataInicio.format(formatter) + " a " + dataFim.format(formatter));
-        System.out.println("-----------------------------------------------------------------");
-        System.out.printf("%-12s %-15s %-10s %-12s %-20s %-15s\n", "Data", "Transação Cod", "Tipo Cod", "Nome Tipo", "Observação", "Valor");
+        System.out.println("\nEXTRATO CONTA BANCÁRIA");
 
-        // Exibir as transações
-        for (Transacao transacao : transacoes) {
-            System.out.printf("%-12s %-15s %-10s %-12s %-20s %-15.2f\n",
-                    transacao.getDataTransacao().format(formatter),
-                    transacao.getCodigoTransacao(),
-                    transacao.getTipoTransacao().getCodigoTipoTransacao(),
-                    transacao.getTipoTransacao().getNomeTipoTransacao(),
-                    transacao.getObservacao(),
-                    transacao.getValorTransacao());
+        clienteService.mostrarDadosCliente(contaBancaria.getCliente());
+        contaBancariaService.mostrarDadosContaBancaria(contaBancaria);
+        mostrarTransacoesBancarias(transacoes, dataInicio, dataFim);
+
+    }
+
+    public void mostrarTransacoesBancarias(List<Transacao> transacoes, LocalDate dataInicio, LocalDate dataFim) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        System.out.println("\nPeríodo do extrato: " + dataInicio.format(formatter) + " a " + dataFim.format(formatter));
+        System.out.println(" ------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-12s | %-15s | %-10s | %-20s | %-30s | %-15s |\n", "Data", "Transação Cod", "Tipo Cod", "Nome Tipo", "Observação", "Valor");
+        System.out.println(" ------------------------------------------------------------------------------------------------------------------------");
+
+        if(transacoes.isEmpty()) {
+            System.out.println("|                                         Não houveram transações nesse período                                         |");
+        } else {
+            for (Transacao transacao : transacoes) {
+                System.out.printf("| %-12s | %-15s | %-10s | %-20s | %-30s | %-15.2f |\n",
+                        transacao.getDataTransacao().format(formatter),
+                        transacao.getCodigoTransacao(),
+                        transacao.getTipoTransacao().getCodigoTipoTransacao(),
+                        transacao.getTipoTransacao().getNomeTipoTransacao(),
+                        transacao.getObservacao(),
+                        transacao.getValorTransacao());
+            }
         }
+
+        System.out.println(" ------------------------------------------------------------------------------------------------------------------------");
     }
 }

@@ -21,6 +21,8 @@ public class ContaBancariaService {
     private final ClienteService clienteService;
     private final AgenciaService agenciaService;
     private final TipoContaBancariaService tipoContaBancariaService;
+    public static final String VERDE = "\u001B[32m";
+    public static final String RESET = "\u001B[0m";
 
     public void cadastrarContaBancaria() {
         Scanner scanner = new Scanner(System.in);
@@ -69,10 +71,11 @@ public class ContaBancariaService {
             return;
         }
 
-        System.out.println("Contas bancárias disponíveis:");
+        System.out.println("\n ----------Contas bancárias disponíveis----------");
         for (ContaBancaria conta : contasBancarias) {
-            System.out.println("Número: " + conta.getNumeroContaBancaria() + ", Tipo: " + conta.getTipoContaBancaria().getNomeTipoContaBancaria());
+            System.out.printf("| Número: %-10s  Tipo: %-20s |%n", conta.getNumeroContaBancaria(), conta.getTipoContaBancaria().getNomeTipoContaBancaria());
         }
+        System.out.println(" ------------------------------------------------");
     }
 
     public ContaBancaria selecionarContaBancaria(Cliente cliente) {
@@ -90,7 +93,7 @@ public class ContaBancariaService {
 
         while (contaSelecionada == null) {
 
-            System.out.println("Digite o número da conta bancária:");
+            System.out.print("Digite o número da conta bancária: ");
             String numeroConta = scanner.nextLine();
 
             for (ContaBancaria conta : contasBancarias) {
@@ -101,7 +104,7 @@ public class ContaBancariaService {
             }
 
             if (contaSelecionada == null) {
-                System.out.println("Número de conta inválido. Tente novamente.");
+                System.out.print("Seleciona uma conta bancária válida: ");
             }
         }
 
@@ -109,12 +112,13 @@ public class ContaBancariaService {
     }
 
     public void mostrarDadosContaBancaria(ContaBancaria contaBancaria) {
+        System.out.println("\nDADOS DA CONTA BANCÁRIA:");
         System.out.println("Nro. Conta: " + contaBancaria.getNumeroContaBancaria());
         System.out.println("Banco: " + contaBancaria.getAgencia().getBanco().getNome());
         System.out.println("Agencia: " + contaBancaria.getAgencia().getCodigoAgencia());
         System.out.println("Tipo conta bancária: " + contaBancaria.getTipoContaBancaria().getNomeTipoContaBancaria());
         System.out.println("Data abertura Conta: " + contaBancaria.getDataAberturaContaBancaria());
-        System.out.println("Saldo Atual da Conta: " + contaBancaria.getSaldoAtuaContaBancaria());
+        System.out.println("Saldo Atual da Conta: " + VERDE + contaBancaria.getSaldoAtuaContaBancaria() + RESET);
     }
 
 }
