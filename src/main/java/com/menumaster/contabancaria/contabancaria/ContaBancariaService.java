@@ -104,7 +104,7 @@ public class ContaBancariaService {
             }
 
             if (contaSelecionada == null) {
-                System.out.print("Seleciona uma conta bancária válida: ");
+                System.out.print("Seleciona uma conta bancária válida. ");
             }
         }
 
