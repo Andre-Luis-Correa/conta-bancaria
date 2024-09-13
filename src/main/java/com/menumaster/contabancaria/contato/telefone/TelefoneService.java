@@ -26,4 +26,8 @@ public class TelefoneService {
             }
         }
     }
+
+    public List<Telefone> findAll(Cliente cliente) {
+        return telefoneRepository.findAllByCliente(cliente);
+    }
 }

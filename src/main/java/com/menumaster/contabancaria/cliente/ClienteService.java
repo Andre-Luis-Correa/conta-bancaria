@@ -1,11 +1,14 @@
 package com.menumaster.contabancaria.cliente;
 
+import com.menumaster.contabancaria.contato.email.Email;
 import com.menumaster.contabancaria.contato.email.EmailService;
+import com.menumaster.contabancaria.contato.telefone.Telefone;
 import com.menumaster.contabancaria.contato.telefone.TelefoneService;
 import com.menumaster.contabancaria.endereco.EnderecoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Scanner;
 
 @Service
@@ -77,5 +80,13 @@ public class ClienteService {
         emailService.mostrarEmailCliente(cliente);
         enderecoService.mostrarEnderecoCliente(cliente);
 
+    }
+
+    public List<Telefone> buscarTelefones(Cliente cliente) {
+        return telefoneService.findAll(cliente);
+    }
+
+    public List<Email> buscarEmails(Cliente cliente) {
+        return emailService.findAll(cliente);
     }
 }

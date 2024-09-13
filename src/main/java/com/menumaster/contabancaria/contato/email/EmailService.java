@@ -24,4 +24,8 @@ public class EmailService {
             }
         }
     }
+
+    public List<Email> findAll(Cliente cliente) {
+        return emailRepository.findAllByCliente(cliente);
+    }
 }
