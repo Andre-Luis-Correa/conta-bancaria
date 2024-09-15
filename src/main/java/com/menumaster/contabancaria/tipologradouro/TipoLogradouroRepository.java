@@ -1,11 +1,16 @@
 package com.menumaster.contabancaria.tipologradouro;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TipoLogradouroRepository extends JpaRepository<TipoLogradouro, String> {
-    boolean existsBySiglaTipoLogradouro(String siglaTipoLogradouro);
 
-    TipoLogradouro findBySiglaTipoLogradouro(String siglaTipoLogradouro);
+    @Query("SELECT CASE WHEN COUNT(tl) > 0 THEN true ELSE false END FROM TipoLogradouro tl WHERE tl.siglaTipoLogradouro = :siglaTipoLogradouro")
+    boolean existsBySiglaTipoLogradouro(@Param("siglaTipoLogradouro") String siglaTipoLogradouro);
+
+    @Query("SELECT tl FROM TipoLogradouro tl WHERE tl.siglaTipoLogradouro = :siglaTipoLogradouro")
+    TipoLogradouro findBySiglaTipoLogradouro(@Param("siglaTipoLogradouro") String siglaTipoLogradouro);
 }
