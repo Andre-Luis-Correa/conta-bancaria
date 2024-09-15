@@ -49,10 +49,8 @@ public class AgenciaService {
                 agencia.getBanco().getNome());
     }
 
-
     private List<Agencia> buscarTodasAgencias() {
         return agenciaRepository.findAll();
     }
-
 
 }

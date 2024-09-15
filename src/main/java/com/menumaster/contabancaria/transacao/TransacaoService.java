@@ -36,6 +36,7 @@ public class TransacaoService {
 
         if(clienteService.verificarSeExisteCliente(cpf)) {
             Cliente cliente = clienteService.buscarClientePorCpf(cpf);
+            clienteService.mostrarNomeCpfCliente(cliente);
             ContaBancaria contaBancaria = contaBancariaService.selecionarContaBancaria(cliente);
             mostrarDadosTransacao(contaBancaria);
         } else {
@@ -66,7 +67,7 @@ public class TransacaoService {
 
     private void imprimirExtrato(ContaBancaria contaBancaria, List<Transacao> transacoes, LocalDate dataInicio, LocalDate dataFim) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Você deseja imprimir o extrato? (S/N): ");
+        System.out.print("Você deseja imprimir o extrato? (S/N): ");
         String opcao = scanner.nextLine();
 
         if (opcao.equalsIgnoreCase("S")) {
@@ -83,7 +84,6 @@ public class TransacaoService {
             collections.put("2", emailDTOList);
             collections.put("3", transacaoDTOList);
 
-            // Gera o arquivo PDF
             byte[] file = jasperService.reportGenerate("reports/extrato.jrxml", params, collections);
 
             if (file != null) {
@@ -144,7 +144,7 @@ public class TransacaoService {
         params.put("AGENCIA_CLIENTE", contaBancaria.getAgencia().getCodigoAgencia());
         params.put("TIPO_CONTA", contaBancaria.getTipoContaBancaria().getNomeTipoContaBancaria());
         params.put("DATA_ABERTURA_CONTA", contaBancaria.getDataAberturaContaBancaria().toString());
-        params.put("SALDO_ATUAL", contaBancaria.getSaldoAtuaContaBancaria().toString());
+        params.put("SALDO_ATUAL", "R$ " + String.format("%.2f", contaBancaria.getSaldoAtuaContaBancaria()));
         params.put("PERIODO_EXTRATO", dataInicio + " a " + dataFim);
 
         return params;
@@ -160,15 +160,15 @@ public class TransacaoService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         System.out.println("\nPeríodo do extrato: " + dataInicio.format(formatter) + " a " + dataFim.format(formatter));
-        System.out.println(" ------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-12s | %-15s | %-10s | %-20s | %-30s | %-15s |\n", "Data", "Transação Cod", "Tipo Cod", "Nome Tipo", "Observação", "Valor");
-        System.out.println(" ------------------------------------------------------------------------------------------------------------------------");
+        System.out.println(" ----------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-12s | %-15s | %-10s | %-30s | %-30s | %-15s |\n", "Data", "Transação Cod", "Tipo Cod", "Nome Tipo", "Observação", "Valor");
+        System.out.println(" ----------------------------------------------------------------------------------------------------------------------------------");
 
         if(transacoes.isEmpty()) {
             System.out.println("|                                         Não houveram transações nesse período                                         |");
         } else {
             for (Transacao transacao : transacoes) {
-                System.out.printf("| %-12s | %-15s | %-10s | %-20s | %-30s | %-15.2f |\n",
+                System.out.printf("| %-12s | %-15s | %-10s | %-30s | %-30s | %-15.2f |\n",
                         transacao.getDataTransacao().format(formatter),
                         transacao.getCodigoTransacao(),
                         transacao.getTipoTransacao().getCodigoTipoTransacao(),
@@ -178,6 +178,6 @@ public class TransacaoService {
             }
         }
 
-        System.out.println(" ------------------------------------------------------------------------------------------------------------------------");
+        System.out.println(" ----------------------------------------------------------------------------------------------------------------------------------");
     }
 }

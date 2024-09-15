@@ -45,7 +45,6 @@ public class TipoContaBancariaService {
         return String.format("| Tipo: %-25s  Sigla: %-4s |", tipoContaBancaria.getNomeTipoContaBancaria(), tipoContaBancaria.getSiglaTipoContaBancaria());
     }
 
-    // Função para buscar todos os tipos de conta bancária
     private List<TipoContaBancaria> buscarTodosTiposContaBancaria() {
         return tipoContaBancariaRepository.findAll();
     }

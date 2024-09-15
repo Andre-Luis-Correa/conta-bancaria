@@ -16,7 +16,6 @@ public class TelefoneService {
 
         List<Telefone> telefoneList = telefoneRepository.findAllByCliente(cliente);
 
-        // Exibindo telefones
         System.out.println("Telefones:");
         if (telefoneList.isEmpty()) {
             System.out.println("   Nenhum telefone cadastrado.");

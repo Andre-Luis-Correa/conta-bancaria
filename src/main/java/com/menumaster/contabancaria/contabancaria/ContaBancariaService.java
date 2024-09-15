@@ -70,11 +70,11 @@ public class ContaBancariaService {
             return;
         }
 
-        System.out.println("\n ----------Contas bancárias disponíveis----------");
+        System.out.println("\n ------------------------Contas bancárias disponíveis-----------------------");
         for (ContaBancaria conta : contasBancarias) {
-            System.out.printf("| Número: %-10s  Tipo: %-20s |%n", conta.getNumeroContaBancaria(), conta.getTipoContaBancaria().getNomeTipoContaBancaria());
+            System.out.printf("| Número: %-10s  Tipo: %-20s Banco: %-20s|%n", conta.getNumeroContaBancaria(), conta.getTipoContaBancaria().getNomeTipoContaBancaria(), conta.getAgencia().getBanco().getNome());
         }
-        System.out.println(" ------------------------------------------------");
+        System.out.println(" ---------------------------------------------------------------------------");
     }
 
     public ContaBancaria selecionarContaBancaria(Cliente cliente) {
@@ -117,7 +117,7 @@ public class ContaBancariaService {
         System.out.println("Agencia: " + contaBancaria.getAgencia().getCodigoAgencia());
         System.out.println("Tipo conta bancária: " + contaBancaria.getTipoContaBancaria().getNomeTipoContaBancaria());
         System.out.println("Data abertura Conta: " + contaBancaria.getDataAberturaContaBancaria());
-        System.out.println("Saldo Atual da Conta: " + VERDE + contaBancaria.getSaldoAtuaContaBancaria() + RESET);
+        System.out.println("Saldo Atual da Conta: " + VERDE + "R$ " + String.format("%.2f", contaBancaria.getSaldoAtuaContaBancaria())+ RESET);
     }
 
 }

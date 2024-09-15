@@ -43,12 +43,10 @@ public class TipoLogradouroService {
         System.out.println(" -----------------------------------");
     }
 
-    // Função para buscar todos os tipos de logradouro
     public List<TipoLogradouro> buscarTodosTiposLogradouro() {
         return tipoLogradouroRepository.findAll();
     }
 
-    // Função para formatar a saída dos tipos de logradouro
     private String formatarTipoLogradouro(TipoLogradouro tipoLogradouro) {
         return String.format("| Sigla: %-10s Nome: %-10s| ",
                 tipoLogradouro.getSiglaTipoLogradouro(),

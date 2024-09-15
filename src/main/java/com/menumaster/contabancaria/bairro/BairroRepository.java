@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BairroRepository extends JpaRepository<Bairro, Long> {
 
-    // Consulta personalizada para verificar se um Bairro existe pelo id
     @Query("SELECT CASE WHEN COUNT(b) > 0 THEN true ELSE false END FROM Bairro b WHERE b.id = :id")
     boolean existsById(@Param("id") @NonNull Long id);
 }

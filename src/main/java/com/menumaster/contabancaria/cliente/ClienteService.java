@@ -16,11 +16,8 @@ import java.util.Scanner;
 public class ClienteService {
 
     private final ClienteRepository clienteRepository;
-
     private final EnderecoService enderecoService;
-
     private final TelefoneService telefoneService;
-
     private final EmailService emailService;
 
     public void cadastrarCliente() {
@@ -80,6 +77,12 @@ public class ClienteService {
         emailService.mostrarEmailCliente(cliente);
         enderecoService.mostrarEnderecoCliente(cliente);
 
+    }
+
+    public void mostrarNomeCpfCliente(Cliente cliente) {
+        System.out.println("\nDADOS DO CLIENTE:");
+        System.out.println("Nome: " + cliente.getNomeCliente());
+        System.out.println("CPF: " + cliente.getCpfCliente());
     }
 
     public List<Telefone> buscarTelefones(Cliente cliente) {
